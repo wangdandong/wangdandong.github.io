@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>在Ubuntu下搭建微服务开发环境 | To Be A Web Artisan</title>
+    <meta name="description" content="以艺术家的心态在Web世界中漫游">
+    
+    
+    <link rel="preload" href="/assets/css/0.styles.3dbb6ab1.css" as="style"><link rel="preload" href="/assets/js/app.6d543160.js" as="script"><link rel="preload" href="/assets/js/6.ce1aa72e.js" as="script"><link rel="prefetch" href="/assets/js/2.cda51ec0.js"><link rel="prefetch" href="/assets/js/3.3c7491ba.js"><link rel="prefetch" href="/assets/js/4.edc3338c.js"><link rel="prefetch" href="/assets/js/5.0866a57a.js"><link rel="prefetch" href="/assets/js/7.a78da614.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.3dbb6ab1.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">To Be A Web Artisan</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">主页</a></div><div class="nav-item"><a href="/blog/" class="nav-link router-link-active">博客</a></div> <a href="https://github.com/wangdandong" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav></div></header> <div class="sidebar-mask"></div> <div class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">主页</a></div><div class="nav-item"><a href="/blog/" class="nav-link router-link-active">博客</a></div> <a href="https://github.com/wangdandong" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav>  <ul class="sidebar-links"><li><div class="sidebar-group first"><p class="sidebar-heading open"><span>在Ubuntu下搭建微服务开发环境</span> <!----></p> <ul class="sidebar-group-items"><li><a href="/blog/2017/11/15/setup-microservice-dev-environment.html#java-openjdk" class="sidebar-link">JAVA OpenJDK</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/blog/2017/11/15/setup-microservice-dev-environment.html#mysql" class="sidebar-link">MySQL</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/blog/2017/11/15/setup-microservice-dev-environment.html#zookeeper" class="sidebar-link">Zookeeper</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/blog/2017/11/15/setup-microservice-dev-environment.html#redis" class="sidebar-link">Redis</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/blog/2017/11/15/setup-microservice-dev-environment.html#mongodb" class="sidebar-link">MongoDB</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/blog/2017/11/15/setup-microservice-dev-environment.html#rabbitmq" class="sidebar-link">RabbitMQ</a><ul class="sidebar-sub-headers"></ul></li></ul></div></li></ul> </div> <div class="page"> <div class="content"><h1 id="关于本文"><a href="#关于本文" aria-hidden="true" class="header-anchor">#</a> 关于本文</h1> <ul><li>写作目标：作为在linux下安装JDK、MySQL、Zookeeper、Redis、MongoDB、RabbitMQ等开发组件的快速参考指南</li> <li>Linux版本：Linux Mint 18.2 Sonya（基于Ubuntu 16.04 Xenial）</li></ul> <h1 id="实战记录"><a href="#实战记录" aria-hidden="true" class="header-anchor">#</a> 实战记录</h1> <h2 id="java-openjdk"><a href="#java-openjdk" aria-hidden="true" class="header-anchor">#</a> <strong>JAVA OpenJDK</strong></h2> <p><em>安装</em> <a href="http://openjdk.java.net/install/index.html" target="_blank" rel="noopener noreferrer">^1<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p> <div class="language- extra-class"><pre class="language-text"><code>sudo apt install openjdk-8-jdk
+</code></pre></div><h2 id="mysql"><a href="#mysql" aria-hidden="true" class="header-anchor">#</a> <strong>MySQL</strong></h2> <p><em>安装</em> <a href="https://dev.mysql.com/doc/mysql-apt-repo-quick-guide/en/" target="_blank" rel="noopener noreferrer">^2<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a> <a href="https://dev.mysql.com/downloads/repo/apt/" target="_blank" rel="noopener noreferrer">^3<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p> <div class="language- extra-class"><pre class="language-text"><code>wget https://dev.mysql.com/get/mysql-apt-config_0.8.6-1_all.deb
+dpkg -i mysql-apt-config_0.8.6-1_all.deb
+apt update
+apt install mysql-server
+</code></pre></div><p><em>配置</em></p> <div class="language- extra-class"><pre class="language-text"><code>vi /etc/mysql/conf.d/mysql.cnf
+[mysql]
+default-character-set=utf8
+
+vi /etc/mysql/mysql.conf.d/mysqld.cnf
+[mysqld]
+# 注释如下配置以允许远程访问
+# bind-address  = 127.0.0.1
+character-set-server=utf8
+default-time-zone='+8:00'
+
+# 重启服务
+sudo service mysql restart
+</code></pre></div><p><em>常用命令</em></p> <div class="language- extra-class"><pre class="language-text"><code># 登录
+mysql -uroot -p
+
+# 创建用户、数据库
+create user 'test'@'%' identified by '123456';
+create database test;
+grant all on test.* to 'test'@'%';
+flush privileges;
+
+# 重置root密码
+sudo service mysql stop
+sudo mkdir -p /var/run/mysqld
+sudo chown mysql:adm /var/run/mysqld
+sudo nohup mysqld_safe --skip-grant-tables --skip-networking &amp;
+#进入mysql shell后用下面修改密码的方式更改root密码
+mysql
+update mysql.user set authentication_string=password('123456') where user='root' and host = 'localhost';
+#重启服务
+mysqladmin shutdown
+sudo service mysql start
+
+# 修改密码
+#方式一 (https://dev.mysql.com/doc/refman/5.7/en/password-hashing.html)
+set password for 'root'@'localhost'=password('123456');
+flush privileges;
+#方式二
+update mysql.user set authentication_string=password('123456') where user='root' and host = 'localhost';
+flush privileges;
+
+# 修改数据库字符集
+alter database test character set utf8;
+
+# 查看mysql字符集默认配置
+show variables like '%character%';
+
+# 复制数据库：将数据库db1复制到数据库db2 （https://dev.mysql.com/doc/refman/5.7/en/mysqldump-copying-database.html）
+mysqldump -uroot -p db1 &gt; dump.sql
+mysqladmin -uroot -p create db2
+mysql -uroot -p db2 &lt; dump.sql
+
+</code></pre></div><h2 id="zookeeper"><a href="#zookeeper" aria-hidden="true" class="header-anchor">#</a> <strong>Zookeeper</strong></h2> <div class="warning custom-block"><p class="custom-block-title">注意</p> <p>启动前必须先安装好<a href="#java-openjdk">JDK</a></p></div> <p><em>从Ubuntu软件仓库安装</em> <a href="https://launchpad.net/ubuntu/xenial/+package/zookeeper" target="_blank" rel="noopener noreferrer">^4<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p> <div class="language- extra-class"><pre class="language-text"><code>sudo apt install zookeeperd
+</code></pre></div><p><em>从zookeeper官网下载（推荐此方式，可使用最新稳定版）</em> <a href="http://zookeeper.apache.org/doc/r3.4.10/zookeeperStarted.html" target="_blank" rel="noopener noreferrer">^5<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p> <div class="language- extra-class"><pre class="language-text"><code>#切换到root用户
+su -
+cd /usr/local/share
+wget http://mirrors.aliyun.com/apache/zookeeper/zookeeper-3.4.10/zookeeper-3.4.10.tar.gz
+tar xzf zookeeper-3.4.10.tar.gz
+cd zookeeper-3.4.10
+mv zookeeper-3.4.10 zookeeper
+cp conf/zoo_sample.cfg conf/zoo.cfg
+vi conf/zoo.cfg # 修改 dataDir=/var/lib/zookeeper
+
+# 启动服务
+bin/zkServer.sh start
+
+# 安装为系统自启服务 （https://issues.apache.org/jira/browse/ZOOKEEPER-2095）
+vi /lib/systemd/system/zookeeper.service
+---------------------------------------------------------
+[Unit]
+Description=Apache Zookeeper
+After=network.target
+
+[Service]
+Type=forking
+SyslogIdentifier=zookeeper
+Restart=always
+RestartSec=0s
+ExecStart=/usr/local/share/zookeeper/bin/zkServer.sh start
+ExecStop=/usr/local/share/zookeeper/bin/zkServer.sh stop
+ExecReload=/usr/local/share/zookeeper/bin/zkServer.sh restart
+
+[Install]
+WantedBy=multi-user.target
+---------------------------------------------------------
+
+systemctl start zookeeper
+systemctl enable zookeeper
+
+</code></pre></div><h2 id="redis"><a href="#redis" aria-hidden="true" class="header-anchor">#</a> <strong>Redis</strong></h2> <p><em>从Ubuntu软件仓库安装</em> <a href="https://launchpad.net/ubuntu/xenial/+package/redis-server" target="_blank" rel="noopener noreferrer">^6<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p> <div class="language- extra-class"><pre class="language-text"><code>sudo apt install redis-server
+</code></pre></div><p><em>从redis官网下载（推荐此方式，可使用最新稳定版）</em> <a href="https://redis.io/download" target="_blank" rel="noopener noreferrer">^7<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p> <div class="language- extra-class"><pre class="language-text"><code>#切换到root用户
+su -
+cd /usr/local/share
+wget http://download.redis.io/releases/redis-3.2.9.tar.gz
+tar xzf redis-3.2.9.tar.gz
+cd redis-3.2.9
+make
+
+# 启动服务
+nohup src/redis-server redis.conf &gt; redis-server.out &amp;
+
+# 或者安装为系统自启服务 (设置 redis executable path 时指定 src/redis-server 所在的完整路径)
+utils/install_server.sh
+/etc/init.d/redis_6379 start
+update-rc.d redis_6379 defaults
+
+</code></pre></div><p><em>配置</em> <a href="https://redis.io/commands/auth" target="_blank" rel="noopener noreferrer">^redis_commands_auth<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p> <div class="language- extra-class"><pre class="language-text"><code># 使用场景举例：允许内网环境中其他机器访问时，假设redis安装机器IP为172.18.1.10，可按如下配置
+vi redis.conf
+bind 127.0.0.1 172.18.1.10
+# 使用redis-cli进行访问验证 (redis-cli与redis-server在同一个目录)
+redis-cli -h 172.18.1.10 -p 6379
+
+# 使用场景举例：开启远程访问 （注释掉bind配置项，修改requirepass、masterauth配置项）
+# 务必设置非常复杂、长度很大的密码
+vi redis.conf
+#bind 127.0.0.1
+# 在master实例修改requirepass配置项
+requirepass Fmg1$7!&amp;bcNp@iY0tW6pEVPP!FZ9vHMd5a%TOJAGI8bO7qqT1%
+# 在slave实例修改masterauth配置项
+masterauth Fmg1$7!&amp;bcNp@iY0tW6pEVPP!FZ9vHMd5a%TOJAGI8bO7qqT1%
+
+# 验证授权
+# ./redis-cli -a 'Fmg1$7!&amp;bcNp@iY0tW6pEVPP!FZ9vHMd5a%TOJAGI8bO7qqT1%'
+
+# 如果启用密码访问，须要修改/etc/init.d/redis_6379
+$CLIEXEC -p $REDISPORT -a 'Fmg1$7!&amp;bcNp@iY0tW6pEVPP!FZ9vHMd5a%TOJAGI8bO7qqT1%' shutdown
+
+# 修改完配置后注意重启服务
+/etc/init.d/redis_6379 restart
+
+</code></pre></div><h2 id="mongodb"><a href="#mongodb" aria-hidden="true" class="header-anchor">#</a> <strong>MongoDB</strong></h2> <p><em>安装</em> <a href="https://docs.mongodb.com/v3.2/tutorial/install-mongodb-on-ubuntu/" target="_blank" rel="noopener noreferrer">^8<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p> <div class="language- extra-class"><pre class="language-text"><code>sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv EA312927
+# 使用阿里云镜像站，加快下载速度
+sudo echo &quot;deb http://mirrors.aliyun.com/mongodb/apt/ubuntu xenial/mongodb-org/3.2 multiverse&quot; | sudo tee /etc/apt/sources.list.d/mongodb-org-3.2.list
+sudo apt-get update
+sudo apt-get install -y mongodb-org
+</code></pre></div><p><em>配置</em> <a href="https://docs.mongodb.com/v3.2/reference/configuration-options/" target="_blank" rel="noopener noreferrer">^9<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a> <a href="https://docs.mongodb.com/v3.2/tutorial/enable-authentication/" target="_blank" rel="noopener noreferrer">^10<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a> <a href="https://docs.mongodb.com/v3.2/core/authorization/" target="_blank" rel="noopener noreferrer">^11<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a> <a href="https://docs.mongodb.com/v3.2/core/security-built-in-roles/" target="_blank" rel="noopener noreferrer">^12<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p> <ul><li>默认配置文件路径是/etc/mongod.conf</li> <li>如果想为mongos或mongod绑定多个监听的IP地址，可将net.bindIp设置为英文逗号分割的多个IP地址</li></ul> <div class="language- extra-class"><pre class="language-text"><code># 使用场景举例：允许内网环境中其他机器访问时，假设mongod安装机器IP为172.18.1.10，可按如下配置
+vi /etc/mongod.conf
+net:
+  bindIp: 127.0.0.1,172.18.1.10
+
+# 使用场景举例：开启远程访问 （注释net.bindIp配置项，添加security.authorization配置项；创建授权用户）
+vi /etc/mongod.conf
+net:
+  # bindIp: 127.0.0.1
+security:
+  authorization: enabled
+
+mongo
+use admin
+db.createUser(
+  {
+    user: &quot;root&quot;,
+    pwd: &quot;123456&quot;,
+    roles: [ { role: &quot;root&quot;, db: &quot;admin&quot; } ]
+  }
+)
+use test
+db.createUser(
+  {
+    user: &quot;test&quot;,
+    pwd: &quot;123456&quot;,
+    roles: [ { role: &quot;dbOwner&quot;, db: &quot;test&quot; } ]
+  }
+)
+
+# 重启服务以使配置生效
+sudo service mongod restart
+
+# 开启授权后的登录举例，特别注意authenticationDatabase参数的使用，它与用户所授权角色对应的数据库有关，root角色拥有所有库的所有操作权限，dbOwner角色只有授权库的所有操作权限
+mongo localhost:27017/test -u &quot;root&quot; -p &quot;123456&quot; --authenticationDatabase &quot;admin&quot;
+mongo localhost:27017/test -u &quot;test&quot; -p &quot;123456&quot; --authenticationDatabase &quot;test&quot;
+
+</code></pre></div><h2 id="rabbitmq"><a href="#rabbitmq" aria-hidden="true" class="header-anchor">#</a> <strong>RabbitMQ</strong></h2> <p><em>安装</em> <a href="http://www.rabbitmq.com/download.html" target="_blank" rel="noopener noreferrer">^13<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p> <ul><li>使用PackageCloud APT Repository进行安装 <a href="https://packagecloud.io/rabbitmq/rabbitmq-server/install#bash-deb" target="_blank" rel="noopener noreferrer">^14<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul> <div class="language- extra-class"><pre class="language-text"><code>curl -s https://packagecloud.io/install/repositories/rabbitmq/rabbitmq-server/script.deb.sh | sudo bash
+
+sudo apt-get install rabbitmq-server
+</code></pre></div><ul><li>使用RabbitMQ APT Repository进行安装 <a href="http://www.rabbitmq.com/install-debian.html" target="_blank" rel="noopener noreferrer">^15<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul> <div class="language- extra-class"><pre class="language-text"><code>echo 'deb http://www.rabbitmq.com/debian/ testing main' | sudo tee /etc/apt/sources.list.d/rabbitmq.list
+
+wget -O- https://www.rabbitmq.com/rabbitmq-release-signing-key.asc | sudo apt-key add -
+或者
+wget -O- https://dl.bintray.com/rabbitmq/Keys/rabbitmq-release-signing-key.asc | sudo apt-key add -
+
+sudo apt-get update
+sudo apt-get install rabbitmq-server
+</code></pre></div><p><em>配置</em> <a href="http://www.rabbitmq.com/configure.html" target="_blank" rel="noopener noreferrer">^16<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a> <a href="http://www.rabbitmq.com/relocate.html" target="_blank" rel="noopener noreferrer">^17<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a> <a href="http://www.rabbitmq.com/access-control.html" target="_blank" rel="noopener noreferrer">^18<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a> <a href="http://www.rabbitmq.com/man/rabbitmqctl.1.man.html" target="_blank" rel="noopener noreferrer">^19<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p> <ul><li>配置所在路径：在/var/log/rabbitmq/rabbit@{计算机名}.log查看；<br>
+默认情况rabbitmq.config、rabbitmq-env.conf在目录/etc/rabbitmq/中，如果文件不存在可自行创建，
+rabbitmq.config配置示例：/usr/share/doc/rabbitmq-server/rabbitmq.config.example.gz或者访问<a href="https://github.com/rabbitmq/rabbitmq-server/blob/stable/docs/rabbitmq.config.example" target="_blank" rel="noopener noreferrer">rabbitmq.config.example<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>，
+也可通过设置系统环境变量RABBITMQ_CONFIG_FILE、RABBITMQ_CONF_ENV_FILE指定具体路径；<br>
+修改完成后须要重启rabbimq-server服务；<br>
+默认配置如下，注意RABBITMQ_CONFIG_FILE配置路径不用添加.config后缀，Erlang运行时会自动追加：</li></ul> <div class="language- extra-class"><pre class="language-text"><code>RABBITMQ_CONFIG_FILE=/etc/rabbitmq/rabbitmq
+RABBITMQ_CONF_ENV_FILE=/etc/rabbitmq/rabbitmq-env.conf
+</code></pre></div><ul><li><p>默认账号： 用户名密码都是guest<br>
+默认只能通过loopback地址(例如localhost)连接guest账号,如果想允许远程访问，须要修改rabbitmq.config(将loopback_users配置项设为[])：<code>[{rabbit, [{loopback_users, []}]}].</code></p></li> <li><p><a href="http://www.rabbitmq.com/management.html" target="_blank" rel="noopener noreferrer">使用Management Plugin<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>，执行<code>sudo rabbitmq-plugins enable rabbitmq_management</code>启用成功后可访问<a href="http://localhost:15672/" target="_blank" rel="noopener noreferrer">Web UI<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>进行管理</p></li> <li><p>其他常用指令</p></li></ul> <div class="language- extra-class"><pre class="language-text"><code># 创建新用户，增加权限
+sudo rabbitmqctl add_user test 123456
+sudo rabbitmqctl set_permissions -p / test &quot;.*&quot; &quot;.*&quot; &quot;.*&quot;
+sudo rabbitmqctl set_user_tags test administrator
+# 验证账号
+sudo rabbitmqctl authenticate_user test 123456
+
+# 修改密码 
+sudo rabbitmqctl change_password test 123456
+
+</code></pre></div></div> <div class="page-edit"><!----> <!----></div> <!----> </div> <!----></div></div>
+    <script src="/assets/js/6.ce1aa72e.js" defer></script><script src="/assets/js/app.6d543160.js" defer></script>
+  </body>
+</html>
